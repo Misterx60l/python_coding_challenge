@@ -2,50 +2,49 @@
 # Created by Anjaan
 todo_list = []
 
-# function to add task in the todo list:
+# function to add task
 def add_Task(task):
-	todo_list.append(task)	
+	todo_list.append(task)
 
-# function to view task in the todo list	
+# function to view task
 def view_Task():
 	if todo_list:
 		print("\nTo-Do list\n")
 		for index, task in enumerate(todo_list, start=1):
 			print(f"{index}. {task}")
-	else:
-		print("You didn't added task in the To-Do list...")
-		
-# function to remove task from the todo list	
+
+# function to remove task
 def remove_Task(task_index):
 	if 1 <= task_index <= len(todo_list):
-		remove_task = todo_list.pop(task_index)
-		print(f"Task {remove_task} removed from the to do list")
-	
+		remove_task = todo_list.pop(task_index - 1) 
+		print(f"Task {remove_task} from the todo list")
 	else:
-		print("Enter a valid index number")
+		print("\nPlease enter a valid number")
 		
-# Main Loop
+		
+# Main loop
 while True:
-	print("\nOptions")
-	print("1. Add Tasks")
-	print("2. View Tasks")
-	print("3. Remove Task")
-	print("4. Quit")
-	
-	Opt = int(input("Choose an Options from the above! >>>> "))
-	
-	if Opt == 1:
-		task = input("Enter Your Task >>> ") 
-		add_Task(task)
-	elif Opt == 2:
-		view_Task()
-	elif Opt == 3:
-		task_index = int(input("Enter the Index number >>> "))
-		remove_Task(task_index)
-	elif Opt == 4:
-		print("Good Bye Sir")
-		break
-	else:
-		print("Please enter a valid option!")
+	try:
+		print("\nOption")		
+		print("1. Add task")
+		print("2. View task")
+		print("3. Remove task")
+		print("4. Quit")
 		
-		
+		Opt = int(input("Choose an option from above! >>> "))
+	# checking 
+		if Opt == 1:
+			task = input("Enter a task. >>> ")
+			add_Task(task)
+		elif Opt == 2:
+			view_Task()
+		elif Opt == 3:
+			task_index = int(input("Enter the index number >>> "))
+			remove_Task(task_index)
+		elif Opt == 4:
+			print("Good Bye sir")
+			break
+		else:
+			print("Please enter a valid value....")
+	except ValueError:
+		print("Please Enter a valid number...")	
